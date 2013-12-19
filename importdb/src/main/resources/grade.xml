@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+        <name>hbase.cdn.tables</name>
+        <value>chinacache_table_1,hot_medina_ysten_table_1,hot_icntv_cctvcdn_table_1,mibox_icntv_cctvcdn_table_1,tvsee_cctvcdn_table_1</value>
+	</property>
+
+    <property>
+        <name>hdfs.directory.from.hbase</name>
+        <value>/icntv/grade/hbase/%tF/%s</value>
+    </property>
+
+     <property>
+         <name>hdfs.directory.base.db</name>
+         <value>/icntv/grade/db/%tF/%s</value>
+     </property>
+    <property>
+        <name>hdfs.directory.base.msg</name>
+        <value>/icntv/grade/msg/%tF/%s</value>
+    </property>
+     <!--
+    <property>
+        <name>hdfs.directory.grade.num.middle</name>
+        <value>/icntv/grade/middle/num/%tF/%s</value>
+    </property>
+    <property>
+        <name>hdfs.directory.grade.time.middle</name>
+        <value>/icntv/grade/middle/time/%tF/%s</value>
+    </property>
+    -->
+    <!-- 播放次数-->
+    <property>
+        <name>film.see.num.table</name>
+        <value>icntv.grade.film.num</value>
+    </property>
+    <!-- 综合评分-->
+    <property>
+        <name>film.see.grade.table</name>
+        <value>icntv.grade.film.composite</value>
+    </property>
+    <property>
+        <name>film.recommend.table</name>
+        <value>icntv.grade.recommend.result</value>
+    </property>
+    <property>
+        <name>film.base.msg</name>
+        <value>icntv.grade.base.msg</value>
+    </property>
+    <!-- init job classname-->
+    <property>
+        <name>unit.table.job.className</name>
+        <value>tv.icntv.grade.film.dbcollect.TableInitJob</value>
+    </property>
+    <!-- grade job classname-->
+    <property>
+        <name>unit.grade.job.className</name>
+        <value>tv.icntv.grade.film.grade.GradeJob</value>
+    </property>
+
+    <!-- recommend job classname-->
+    <property>
+        <name>recommend.job.className</name>
+        <value>tv.icntv.grade.film.recommend.CFRecommendJob</value>
+    </property>
+
+    <!-- correlate job classname -->
+    <property>
+        <name>correlate.job.className</name>
+        <value>tv.icntv.grade.film.recommend.CorrelateJob</value>
+    </property>
+    <property>
+        <name>correlate.min</name>
+    </property>
+    <!-- grade element contain : time,num,dbcollect,buy;and composite sum =1-->
+    <property>
+        <name>grade.element.time.percent</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>grade.element.num.percent</name>
+        <value>0</value>
+    </property>
+
+    <!-- -->
+    <property>
+        <name>grade.total.score</name>
+        <value>10.0</value>
+    </property>
+
+    <!-- cf recommend directory input ,output,parameter -->
+    <property>
+        <name>icntv.cf.recommend.directory.source</name>
+        <value>/icntv/grade/recommend/cf/%tF</value>
+    </property>
+    <property>
+        <name>icntv.cf.recommend.directory.target</name>
+        <value>/icntv/grade/recommend/cf-result/%tF</value>
+    </property>
+    <property>
+        <name>icntv.cf.recommend.directory.temp</name>
+        <value>/temp/cf/recommend/{0}</value>
+    </property>
+    <property>
+        <name>icntv.cf.recommend.num</name>
+        <value>10</value>
+    </property>
+     <property>
+         <name>icntv.cf.recommend.similarityClassname</name>
+         <value>SIMILARITY_PEARSON_CORRELATION</value>
+     </property>
+
+    <!-- 关联推荐 -->
+    <property>
+        <name>icntv.correlate.input</name>
+        <value>/icntv/grade/correlate/%tF</value>
+    </property>
+</configuration>
