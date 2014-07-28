@@ -15,12 +15,10 @@
 
 package tv.icntv.imported;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
 
-import java.util.Date;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
 * Created with IntelliJ IDEA.
@@ -29,17 +27,21 @@ import java.util.Date;
 * Time: 下午2:19
 */
 public class Scheduler {
-    public static void main(String[]args) throws SchedulerException {
-        new Scheduler().start();
+    public static void main(String[]args) throws SchedulerException, MalformedURLException {
+//        new Scheduler().start();
+        URL url = new URL("http://www.baidu.com/abc/t.s");
+        System.out.println(url.getPath());
     }
 
-    public void start() throws SchedulerException {
-        SchedulerFactory sf = new StdSchedulerFactory();
-        org.quartz.Scheduler scheduler=sf.getScheduler();
-        JobDetail detail = JobBuilder.newJob(ImportJob.class).withIdentity("import data","icntv").build();
-        Trigger trigger= TriggerBuilder.newTrigger().withIdentity("trigger", "icntv").startAt(new Date()).withSchedule(SimpleScheduleBuilder.repeatHourlyForever(12).repeatForever()).build();
-        scheduler.scheduleJob(detail,trigger);
-        scheduler.start();
+    public void start() throws SchedulerException, MalformedURLException {
+//        SchedulerFactory sf = new StdSchedulerFactory();
+//        org.quartz.Scheduler scheduler=sf.getScheduler();
+//        JobDetail detail = JobBuilder.newJob(ImportJob.class).withIdentity("import data","icntv").build();
+//        Trigger trigger= TriggerBuilder.newTrigger().withIdentity("trigger", "icntv").startAt(new Date()).withSchedule(SimpleScheduleBuilder.repeatHourlyForever(12).repeatForever()).build();
+//        scheduler.scheduleJob(detail,trigger);
+//        scheduler.start();
+        URL url = new URL("http://www.baidu.com/abc/t.s");
+        System.out.println(url.getPath());
     }
 
 }

@@ -40,8 +40,8 @@ public class CorrelateInputMapper extends Mapper<Text,TopKStringPatterns,Text,Te
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
         Configuration configuration = context.getConfiguration();
-        minSup= Floats.tryParse(configuration.get("correlate.result.minSup","0.0002"));
-        minConf=Floats.tryParse(configuration.get("correlate.result.conf", "0.03"));
+        minSup= Float.parseFloat(configuration.get("correlate.result.minSup","0.0002"));
+        minConf=Float.parseFloat(configuration.get("correlate.result.conf", "0.03"));
         totalSize=configuration.getLong("icntv.correlate.total.size",0L);
         System.out.println(totalSize+"\t"+minSup+"\t"+minConf);
     }

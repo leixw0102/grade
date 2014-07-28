@@ -38,6 +38,7 @@ import java.util.Date;
  * Date: 13-12-19
  * Time: 上午10:36
  */
+@Deprecated
 public class TableConcurrencyJob extends AbstractJob {
 
     @Override

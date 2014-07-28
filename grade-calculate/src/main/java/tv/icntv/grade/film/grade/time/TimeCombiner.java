@@ -35,7 +35,7 @@ public class TimeCombiner extends Reducer<Text, Text,Text,Text> {
         List<Text> list = Lists.newArrayList(values);
         double timeScore = 0.0;
         for (Text it : list) {
-            Double temp=Doubles.tryParse(it.toString());
+            Double temp=Double.parseDouble(it.toString());
             if(null == temp){
                 continue;
             }

@@ -104,11 +104,11 @@
     <!-- fp 阈值设置  -->
     <property>
         <name>correlate.result.minSup</name>
-        <value>0.006</value>
+        <value>0.00002</value>
     </property>
     <property>
         <name>correlate.result.conf</name>
-        <value>0.03</value>
+        <value>0.003</value>
     </property>
     <!--关联推荐目录 -->
     <property>

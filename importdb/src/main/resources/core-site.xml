@@ -15,7 +15,7 @@
     </property>
     <property>
         <name>fs.default.name</name>
-        <value>hdfs://slave102:8020/</value>
+        <value>hdfs://VM-88-129-ubuntu:8020/</value>
     </property>
     <property>
         <name>fs.trash.interval</name>

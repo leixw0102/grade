@@ -24,7 +24,7 @@
 <configuration>
 	<property>
 		<name>hbase.rootdir</name>
-		<value>hdfs://slave102:8020/cntvhbase</value>
+		<value>hdfs://VM-88-129-ubuntu:8020/cntvhbase</value>
 
 	</property>
 	<property>

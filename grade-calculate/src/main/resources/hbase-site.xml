@@ -22,17 +22,30 @@
  */
 -->
 <configuration>
-	<property>
-		<name>hbase.rootdir</name>
-		<value>hdfs://slave102:8020/cntvhbase</value>
+	<!--<property>-->
+		<!--<name>hbase.rootdir</name>-->
+		<!--<value>hdfs://VM-88-129-ubuntu:8020/cntvhbase</value>-->
 
-	</property>
-	<property>
-		<name>hbase.cluster.distributed</name>
-		<value>true</value>
-	</property>
-	<property>
-		<name>hbase.zookeeper.quorum</name>
-		<value>slave102,slave103,slave104,slave106,slave107</value>
-	</property>
+	<!--</property>-->
+	<!--<property>-->
+		<!--<name>hbase.cluster.distributed</name>-->
+		<!--<value>true</value>-->
+	<!--</property>-->
+	<!--<property>-->
+		<!--<name>hbase.zookeeper.quorum</name>-->
+		<!--<value>VM-88-129-ubuntu,VM-100-123-ubuntu,VM-100-122-ubuntu,VM-96-172-ubuntu,VM-92-127-ubuntu</value>-->
+	<!--</property>-->
+    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://icntv/cntvhbase</value>
+
+    </property>
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>master1,master2,node1,node2,node3,node4,node5</value>
+    </property>
 </configuration>

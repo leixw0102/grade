@@ -38,7 +38,7 @@ import java.util.concurrent.Callable;
  * Time: 上午9:13
  */
 public class DBLoad extends AbstractDB implements Callable<List<FilmMsg>> {
-    private final String FIND_TIME_AND_PROGRAMID = "select a.PROGRAM_ID,a.PLAY_URL,b.PROGRAM_LENGTH,b.program_name,b.zone,b.years,b.director,d.leading_role,d.tag,d.PROGRAM_CLASS," +
+    private static final String FIND_TIME_AND_PROGRAMID = "select a.PROGRAM_ID,a.PLAY_URL,b.PROGRAM_LENGTH,b.program_name,b.zone,b.years,b.director,d.leading_role,d.tag,d.PROGRAM_CLASS," +
             "d.SCRIPT_WRITER,d.PROGRAM_SERIES_ID " +
             "from cms_program b,CMS_PROGRAM_SERIES_REL c,CMS_PROGRAM_SERIES d," +
             " (select program_id,play_url from CMS_PROGRAM_BITRATE where PLAY_URL %s) a " +
@@ -121,7 +121,7 @@ public class DBLoad extends AbstractDB implements Callable<List<FilmMsg>> {
         });
     }
     public static void main(String[]args){
-        List<FilmMsg> list= new DBLoad(new String[]{},"").getDB(new String[]{"/media/new/2013/09/11/hd_dy_ylgz_20130911.ts"}) ;
-        System.out.println(Films.toString(list));
+//        List<FilmMsg> list= new DBLoad(new String[]{},"").getDB(new String[]{"/media/new/2013/09/11/hd_dy_ylgz_20130911.ts"}) ;
+        System.out.println(FIND_TIME_AND_PROGRAMID);
     }
 }

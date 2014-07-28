@@ -68,7 +68,12 @@ public abstract class AbstractDB<T> {
         Preconditions.checkNotNull(cause);
         Preconditions.checkNotNull(key);
 
-        List<T> t = getCache(key);
+        List<T> t =null;
+        try{
+                t=getCache(key);
+        }catch (Exception e){
+            System.out.println("get cache exception-->"+e);
+        }
         if(null != t && !t.isEmpty()){
             return t;
         }

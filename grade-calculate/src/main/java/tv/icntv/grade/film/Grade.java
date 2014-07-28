@@ -69,17 +69,17 @@ public class Grade extends AbstractJob {
         for (String table : tables) {
             String db = String.format(configuration.get("hdfs.directory.base.db"), new Date(), table);
             source += db + ",";
-            String[] arrays = new String[]{table,//input table
-                    String.format(configuration.get("hdfs.directory.from.hbase"), new Date(), table),
-                    db
+//            String[] arrays = new String[]{table,//input table
+//                    String.format(configuration.get("hdfs.directory.from.hbase"), new Date(), table),
+//                    db
             };
             try {
-               ToolRunner.run(configuration, (Tool) ReflectionUtils.newInstance(configuration.get("unit.table.job.className")), arrays);
+               ToolRunner.run(configuration, (Tool) ReflectionUtils.newInstance(configuration.get("unit.table.job.className")), tables);
             } catch (Exception e) {
-                continue;
+//                continue;
             }
 
-        }
+//        }
         //topN
         try{
             ToolRunner.run(configuration,new TopNJob(),new String[]{

@@ -35,6 +35,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static com.google.common.base.Splitter.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: xiaowu lei
@@ -76,7 +78,7 @@ public class Test {
 //        });
 //        System.out.println(count);
         String t="http://vod01.media.ysten.com/media/new/2011/12/26/hd_dy_xqdzzz1_20111226.ts     1335151,1411025 774727,780211   129";
-        System.out.print(Splitter.on("\t").splitToList(t).size());
+        System.out.print(t);
     }
 
 }

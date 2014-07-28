@@ -22,6 +22,22 @@
              <version>1.0-SNAPSHOT</version>
          </dependency>
          <dependency>
+             <groupId>org.apache.hadoop</groupId>
+             <artifactId>hadoop-hdfs</artifactId>
+         </dependency>
+         <dependency>
+             <artifactId>hbase-common</artifactId>
+             <groupId>org.apache.hbase</groupId>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.hbase</groupId>
+             <artifactId>hbase-hadoop2-compat</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>org.apache.hbase</groupId>
+             <artifactId>hbase-server</artifactId>
+         </dependency>
+         <dependency>
              <groupId>com.jolbox</groupId>
              <artifactId>bonecp</artifactId>
              <version>0.7.1.RELEASE</version>
@@ -36,30 +52,30 @@
              <artifactId>fastjson</artifactId>
              <version>1.1.36</version>
          </dependency>
-         <dependency>
-             <groupId>org.apache.hbase</groupId>
-             <artifactId>hbase</artifactId>
-             <version>0.94.14</version>
-             <exclusions>
-                 <exclusion>
-                     <artifactId>thrift</artifactId>
-                     <groupId>org.apache.thrift</groupId>
-                 </exclusion>
-                 <exclusion>
-                     <artifactId>slf4j-api</artifactId>
-                     <groupId>org.slf4j</groupId>
-                 </exclusion>
-                 <exclusion>
-                     <artifactId>slf4j-log4j12</artifactId>
-                     <groupId>org.slf4j</groupId>
-                 </exclusion>
-             </exclusions>
-         </dependency>
-         <dependency>
-             <groupId>org.apache.hadoop</groupId>
-             <artifactId>hadoop-core</artifactId>
-             <version>1.2.1</version>
-         </dependency>
+         <!--<dependency>-->
+             <!--<groupId>org.apache.hbase</groupId>-->
+             <!--<artifactId>hbase</artifactId>-->
+             <!--<version>0.94.14</version>-->
+             <!--<exclusions>-->
+                 <!--<exclusion>-->
+                     <!--<artifactId>thrift</artifactId>-->
+                     <!--<groupId>org.apache.thrift</groupId>-->
+                 <!--</exclusion>-->
+                 <!--<exclusion>-->
+                     <!--<artifactId>slf4j-api</artifactId>-->
+                     <!--<groupId>org.slf4j</groupId>-->
+                 <!--</exclusion>-->
+                 <!--<exclusion>-->
+                     <!--<artifactId>slf4j-log4j12</artifactId>-->
+                     <!--<groupId>org.slf4j</groupId>-->
+                 <!--</exclusion>-->
+             <!--</exclusions>-->
+         <!--</dependency>-->
+         <!--<dependency>-->
+             <!--<groupId>org.apache.hadoop</groupId>-->
+             <!--<artifactId>hadoop-core</artifactId>-->
+             <!--<version>1.2.1</version>-->
+         <!--</dependency>-->
      </dependencies>
     <build>
         <plugins>

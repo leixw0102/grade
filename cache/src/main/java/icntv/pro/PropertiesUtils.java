@@ -15,7 +15,6 @@
 
 package icntv.pro;
 
-import com.google.common.base.Preconditions;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -27,9 +26,6 @@ import java.util.Properties;
  * Time: 下午1:33
  */
 public class PropertiesUtils {
-
-
-
     private PropertiesUtils(){
        this("redis.properties");
     }
@@ -49,7 +45,9 @@ public class PropertiesUtils {
        return new PropertiesUtils(file);
     }
     public String getString(String key){
-        Preconditions.checkNotNull(properties);
+        if(null == properties){
+            throw new NullPointerException(" property null");
+        }
         return properties.getProperty(key);
     }
     public Integer getInt(String key){

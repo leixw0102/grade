@@ -18,7 +18,7 @@ package tv.icntv.grade.film.grade.num;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
-import com.google.common.primitives.Longs;
+import com.google.common.collect.Lists;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -40,7 +40,7 @@ public class NumProgramSetsMapper extends Mapper<LongWritable,Text,Text,Text> {
         if(value==null || Strings.isNullOrEmpty(value.toString())){
             return;
         }
-        List<String> vs = Splitter.on("\t").splitToList(value.toString());
+        List<String> vs = Lists.newArrayList(Splitter.on("\t").split(value.toString()));
         if(null == vs || vs.isEmpty() || vs.size()!=4){
             System.out.println("value format error ");
             return;

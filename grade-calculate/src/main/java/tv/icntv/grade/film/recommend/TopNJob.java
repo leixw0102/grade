@@ -25,6 +25,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
+import org.apache.hadoop.hbase.regionserver.HRegion;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -52,7 +53,7 @@ public class TopNJob extends AbstractJob {
         Job numJob = new Job(configuration, "calculate film program seed num job ");
         Path[] paths = getPaths(strings[0].split(","));
         HadoopUtils.deleteIfExist(strings[1]);
-        MapReduceUtils.initMapperJob(NumCountMapper.class, Text.class, LongWritable.class, this.getClass(), numJob, paths);
+        MapReduceUtils.initMapperJob(NumCountMapper.class, Text.class, Text.class, this.getClass(), numJob, paths);
         //TableMapReduceUtil.initTableReducerJob(strings[1], NumCountReducer.class, numJob);
         MapReduceUtils.initReducerJob(new Path(strings[1]),NumCountReducer.class,numJob);
         numJob.waitForCompletion(true);
@@ -72,7 +73,7 @@ public class TopNJob extends AbstractJob {
         if (Strings.isNullOrEmpty(tables)) {
             return;
         }
-        List<String> list = Splitter.on(",").splitToList(tables);
+        List<String> list = Lists.newArrayList(Splitter.on(",").split(tables));
         List<String> results = Lists.transform(list, new Function<String, String>() {
             @Override
             public String apply(@Nullable java.lang.String input) {

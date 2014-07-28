@@ -41,15 +41,15 @@ import java.util.List;
 public class TimeReducer extends Reducer<Text, Text, Text,Text> {
 //public class TimeReducer extends Reducer<Text,Text,Text,Text> {
     private static final String scoreKey = "grade.total.score";
-    private int scoreValue;
+    private double scoreValue=10.0;
     String pattern="\\d*";
     @Override
     protected void setup(Context context) throws IOException, InterruptedException {
         Configuration configuration = context.getConfiguration();
 //        System.out.println(configuration.get("mapred.task.timeout"));
-//        configuration.setLong("mapred.task.timeout",6000000L);
+        configuration.setLong("mapred.task.timeout",6000000L);
 //        System.out.println("setup configuration"+configuration.get("mapred.task.timeout"));
-        scoreValue = configuration.getInt(scoreKey, 10);
+        scoreValue = Double.parseDouble(configuration.get(scoreKey, "10.0"));
     }
 
     @Override
@@ -63,17 +63,17 @@ public class TimeReducer extends Reducer<Text, Text, Text,Text> {
             return;
         }
         String itemId=k.substring(15, k.length());
-        Long temp  = Longs.tryParse(itemId);
+        Long temp  = Long.parseLong(itemId);
         if(null ==temp ){
             return;
         }
         double timeScore = 0.0;
         List<Text> list = Lists.newArrayList(values);
         for (Text it : list) {
-            timeScore += Doubles.tryParse(it.toString());
+            timeScore += Double.parseDouble(it.toString());
 
         }
-        float score = (float) MathExtend.divide(timeScore, list.size(), 3) * scoreValue;
+        double score = MathExtend.divide(timeScore, list.size(), 3) * scoreValue;
 //        Put put = new Put(Bytes.toBytes(k));
 //        put.add(Bytes.toBytes("base"), Bytes.toBytes("userId"), Bytes.toBytes(k.substring(0, 15)));
 //        put.add(Bytes.toBytes("base"), Bytes.toBytes("itemId"), Bytes.toBytes(k.substring(15, k.length())));

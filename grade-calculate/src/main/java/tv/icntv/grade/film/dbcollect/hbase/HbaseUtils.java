@@ -15,15 +15,10 @@
 
 package tv.icntv.grade.film.dbcollect.hbase;
 
-import com.google.common.primitives.Floats;
-import com.google.common.primitives.Longs;
-import org.apache.hadoop.conf.Configuration;
+
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.filter.CompareFilter;
-import org.apache.hadoop.hbase.filter.Filter;
-import org.apache.hadoop.hbase.filter.KeyOnlyFilter;
-import org.apache.hadoop.hbase.filter.RowFilter;
+import org.apache.hadoop.hbase.client.HTableInterface;
+import org.apache.hadoop.hbase.client.HTablePool;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
@@ -49,7 +44,7 @@ public class HbaseUtils {
 
     }
 
-    public static synchronized   HTableInterface getHtable(String table) {
+    public static synchronized HTableInterface getHtable(String table) {
         HTableInterface hTable = hTablePool.getTable(Bytes.toBytes(table));
         return  hTable;
     }

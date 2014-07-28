@@ -34,7 +34,7 @@ public class NumProgramSetsReducer extends Reducer<Text,Text,Text,LongWritable> 
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         long num=0L;
         for(Iterator<Text> it = values.iterator();it.hasNext();){
-            num+= Longs.tryParse(it.next().toString());
+            num+= Long.parseLong(it.next().toString());
         }
         context.write(key,new LongWritable(num));
     }

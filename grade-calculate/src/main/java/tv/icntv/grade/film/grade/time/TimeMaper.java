@@ -1,6 +1,7 @@
 package tv.icntv.grade.film.grade.time;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Longs;
 import org.apache.hadoop.io.DoubleWritable;
@@ -33,11 +34,11 @@ public class TimeMaper extends Mapper<LongWritable, Text, Text, Text> {
              return ;
         }
         String text = value.toString();
-        List<String> ts= Splitter.on("\t").splitToList(text);
+        List<String> ts= Lists.newArrayList(Splitter.on("\t").split(text));
         if(null == ts || ts.isEmpty()||ts.size()<3){
             return ;
         }
-        long seeTimes=null == ts.get(1)?0L: Longs.tryParse(ts.get(1));
+        long seeTimes=null == ts.get(1)?0L: Long.parseLong(ts.get(1));
         if(seeTimes==0L||seeTimes==-1L){
             return;
         }
@@ -53,11 +54,11 @@ public class TimeMaper extends Mapper<LongWritable, Text, Text, Text> {
             if(null == filmMsgs|| filmMsgs.length==0){
                 continue;
             }
-            Long time=Longs.tryParse(filmMsgs[2]);
+            Long time=Long.parseLong(filmMsgs[2]);
             if(time==0L || time ==null){
                 continue;
             }
-            if(Doubles.tryParse(filmMsgs[12]) == null){
+            if(filmMsgs[12]==null){
                 continue;
             }
             double x=MathExtend.divide(seeTimes, time * 1000, 3);

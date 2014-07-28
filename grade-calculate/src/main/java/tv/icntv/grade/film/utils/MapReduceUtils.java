@@ -48,7 +48,7 @@ public class MapReduceUtils {
             job.setMapOutputKeyClass(outputKeyClass);
         }
         if (null != outputValueClass) {
-            job.setMapOutputValueClass(outputKeyClass);
+            job.setMapOutputValueClass(outputValueClass);
         }
         job.setMapperClass(mapper);
         FileInputFormat.setInputPaths(job,input);

@@ -86,7 +86,7 @@ public class CFRecommendJob extends AbstractJob {
         if (Strings.isNullOrEmpty(tables)) {
             return;
         }
-        List<String> list = Splitter.on(",").splitToList(tables);
+        List<String> list = Lists.newArrayList(Splitter.on(",").split(tables));
         List<String> results = Lists.transform(list, new Function<String, String>() {
             @Override
             public String apply(@Nullable java.lang.String input) {

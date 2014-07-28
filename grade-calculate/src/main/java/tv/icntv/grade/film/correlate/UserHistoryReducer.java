@@ -49,6 +49,6 @@ public class UserHistoryReducer extends Reducer<Text,Text,Text,NullWritable> {
         }
         org.apache.hadoop.mapreduce.Counter counter= context.getCounter(groupName,countName);
         counter.increment(1);
-        context.write(new Text(Joiner.on(TAB).join(ids.iterator())), NullWritable.get());
+        context.write(new Text(Joiner.on(TAB).join(ids)), NullWritable.get());
     }
 }

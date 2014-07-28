@@ -87,8 +87,10 @@ public class GradeJob extends AbstractJob {
         MapReduceUtils.initReducerJob(new Path(strings[3]), UserHistoryReducer.class, correlate);
         ControlledJob correlateController = new ControlledJob(configuration);
         correlateController.setJob(correlate);
+//        controlledJob3.getDependentJobs().add()
 
         JobControl jobControl = new JobControl("unit grade");
+
         jobControl.addJob(controlledJob3);
         jobControl.addJob(controlledJob4);
 //        jobControl.addJob(controlledJob5);
@@ -111,7 +113,7 @@ public class GradeJob extends AbstractJob {
         if (Strings.isNullOrEmpty(tables)) {
             return;
         }
-        List<String> list = Splitter.on(",").splitToList(tables);
+        List<String> list = Lists.newArrayList(Splitter.on(",").split(tables));
         List<String> results = Lists.transform(list, new Function<String, String>() {
             @Override
             public String apply(@Nullable java.lang.String input) {

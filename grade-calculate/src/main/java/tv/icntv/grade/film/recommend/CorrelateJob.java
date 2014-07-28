@@ -25,16 +25,12 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.PathFilter;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
-import org.apache.hadoop.hbase.mapreduce.TableMapper;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.mahout.common.Parameters;
-import org.apache.mahout.fpm.pfpgrowth.FPGrowthDriver;
 import org.apache.mahout.fpm.pfpgrowth.PFPGrowth;
-import org.jruby.util.Join;
 import tv.icntv.grade.film.core.AbstractJob;
 import tv.icntv.grade.film.correlate.UserHistoryMapper;
 import tv.icntv.grade.film.correlate.UserHistoryReducer;
@@ -105,7 +101,7 @@ public class CorrelateJob extends AbstractJob {
         if (Strings.isNullOrEmpty(tables)) {
             return;
         }
-        List<String> list = Splitter.on(",").splitToList(tables);
+        List<String> list = Lists.newArrayList(Splitter.on(",").split(tables));
         List<String> results = Lists.transform(list, new Function<String, String>() {
             @Override
             public String apply(@Nullable java.lang.String input) {
